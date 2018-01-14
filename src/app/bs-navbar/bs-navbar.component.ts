@@ -11,10 +11,7 @@ import { AppUser } from '../models/app-user';
 export class BsNavbarComponent {
   currentUser: AppUser;
   constructor(public auth: AuthService) {
-    auth.currentUser$.subscribe(appUser => {
-      this.currentUser = appUser;
-      console.log(appUser);
-    });
+    auth.currentUser$.subscribe(appUser => this.currentUser = appUser);
   }
 
   logout() {
