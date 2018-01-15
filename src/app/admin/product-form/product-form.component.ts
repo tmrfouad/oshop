@@ -12,25 +12,38 @@ import 'rxjs/add/operator/take';
 export class ProductFormComponent {
   categories$;
   product = {};
+  productId;
 
   constructor(
     categoryService: CategoryService,
     private productService: ProductService,
     private router: Router,
     private route: ActivatedRoute) {
-    this.categories$ = categoryService.getCategories();
+    this.categories$ = categoryService.getAll();
 
-    const id = route.snapshot.paramMap.get('id');
-    if (id) {
-      this.product = productService.get(id)
+    this.productId = route.snapshot.paramMap.get('id');
+    if (this.productId) {
+      this.product = productService.get(this.productId)
         .take(1).subscribe(product => this.product = product);
     }
   }
 
   save(product) {
-    this.productService.create(product)
-      .then(() => {
-        this.router.navigate(['/admin/products']);
-      });
+    if (this.productId) {
+      this.productService.update(this.productId, this.product)
+        .then(() => this.router.navigate(['/admin/products']));
+    } else {
+      this.productService.create(product)
+        .then(() => this.router.navigate(['/admin/products']));
+    }
+  }
+
+  delete() {
+    if (!confirm('Are you sure you want to delete this product?')) { return; }
+
+    if (!this.productId) { return; }
+
+    this.productService.delete(this.productId)
+      .then(() => this.router.navigate(['/admin/products']));
   }
 }
