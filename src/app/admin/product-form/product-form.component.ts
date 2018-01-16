@@ -3,27 +3,32 @@ import { CategoryService } from '../../category.service';
 import { ProductService } from '../../product.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/take';
+import { Product } from '../../models/product';
+import { Category } from '../../models/category';
+import { FirebaseListObservable } from 'angularfire2/database';
 
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.css']
 })
-export class ProductFormComponent {
-  categories$;
-  product = {};
-  productId;
+export class ProductFormComponent implements OnInit {
+  categories$: FirebaseListObservable<Category[]>;
+  product: Product = {};
+  productId: string;
 
   constructor(
-    categoryService: CategoryService,
+    private categoryService: CategoryService,
     private productService: ProductService,
     private router: Router,
-    private route: ActivatedRoute) {
-    this.categories$ = categoryService.getAll();
+    private route: ActivatedRoute) { }
 
-    this.productId = route.snapshot.paramMap.get('id');
+  ngOnInit() {
+    this.categories$ = this.categoryService.getAll();
+
+    this.productId = this.route.snapshot.paramMap.get('id');
     if (this.productId) {
-      this.product = productService.get(this.productId)
+      this.productService.get(this.productId)
         .take(1).subscribe(product => this.product = product);
     }
   }

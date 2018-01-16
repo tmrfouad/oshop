@@ -21,6 +21,8 @@ import { AdminProductsComponent } from './admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
+import { ProductCardComponent } from './products/product-card/product-card.component';
 
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
@@ -28,8 +30,7 @@ import { UserService } from './user.service';
 import { AdminAuthGuard } from './admin-auth-guard.service';
 import { CategoryService } from './category.service';
 import { ProductService } from './product.service';
-import { ProductFilterComponent } from './products/product-filter/product-filter.component';
-import { ProductCardComponent } from './products/product-card/product-card.component';
+import { ShoppingCartService } from './shopping-cart.service';
 
 @NgModule({
   declarations: [
@@ -73,12 +74,18 @@ import { ProductCardComponent } from './products/product-card/product-card.compo
     NgbModule.forRoot()
   ],
   providers: [
+    //#region authentication & authorization
     AuthService,
     AuthGuard,
-    UserService,
     AdminAuthGuard,
+    //#endregion
+
+    //#region data services
+    UserService,
     CategoryService,
-    ProductService
+    ProductService,
+    ShoppingCartService
+    //#endregion
   ],
   bootstrap: [AppComponent]
 })

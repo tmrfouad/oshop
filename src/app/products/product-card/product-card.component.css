@@ -2,6 +2,11 @@
     margin-bottom: 30px;
     margin: 0 5px 30px 5px;
 }
+
 .card-footer {
     padding: 0;
+}
+
+.card-footer button {
+    cursor: pointer;
 }
