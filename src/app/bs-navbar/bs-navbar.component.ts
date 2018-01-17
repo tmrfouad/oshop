@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { AppUser } from '../models/app-user';
@@ -18,10 +19,12 @@ export class BsNavbarComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private cartService: ShoppingCartService) { }
+    private cartService: ShoppingCartService
+  ) { }
 
   async ngOnInit() {
-    this.auth.currentUser$.subscribe(appUser => this.currentUser = appUser);
+    this.auth.currentUser$
+      .subscribe(appUser => this.currentUser = appUser);
     this.cart$ = await this.cartService.get();
   }
 
