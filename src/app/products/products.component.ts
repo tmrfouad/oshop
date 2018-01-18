@@ -12,12 +12,11 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class ProductsComponent implements OnInit {
   products: Product[] = [];
   filteredProducts: Product[] = [];
   category: string;
-  cart: ShoppingCart;
-  subscription: Subscription;
+  cart$: FirebaseObjectObservable<ShoppingCart>;
 
   constructor(
     private productService: ProductService,
@@ -25,24 +24,24 @@ export class ProductsComponent implements OnInit, OnDestroy {
     private cartService: ShoppingCartService) { }
 
   async ngOnInit() {
-    this.productService.getAll()
-      .switchMap(products => {
-        this.filteredProducts = this.products = products;
-        return this.route.queryParamMap;
-      })
-      .subscribe(params => {
-        this.category = params.get('category');
-
-        this.filteredProducts =
-          this.category ?
-          this.products.filter(p => p.category === this.category) :
-          this.products;
-      });
-
-    this.subscription = (await this.cartService.get()).subscribe(cart => this.cart = cart);
+    this.cart$ = await this.cartService.get();
+    this.pupulateProducts();
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  private pupulateProducts() {
+    this.productService.getAll().switchMap(products => {
+        this.filteredProducts = this.products = products;
+        return this.route.queryParamMap;
+    }).subscribe(params => {
+        this.category = params.get('category');
+        this.FilterProducts();
+    });
+  }
+
+  private FilterProducts() {
+    this.filteredProducts =
+    this.category ?
+    this.products.filter(p => p.category === this.category) :
+    this.products;
   }
 }

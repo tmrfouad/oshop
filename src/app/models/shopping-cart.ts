@@ -5,7 +5,7 @@ export class ShoppingCart {
     dateCreated?: Date;
     items?: ShoppingCartItem[] = [];
 
-    constructor(public itemsMap: { [itemId: string]: ShoppingCartItem }) {
+    constructor(private itemsMap: { [itemId: string]: ShoppingCartItem }) {
         this.itemsMap = itemsMap || {};
         for (const itemId in itemsMap) {
             if (itemId) {
@@ -15,7 +15,7 @@ export class ShoppingCart {
         }
     }
 
-    get quantity() {
+    get totalQuantity() {
         let quantity = 0;
         for (const item of this.items)
           quantity += item.quantity || 0;
@@ -29,7 +29,7 @@ export class ShoppingCart {
         return totalPrice;
     }
 
-    getQuantity(product: Product) {
+    getItemQuantity(product: Product) {
         const item: ShoppingCartItem = this.itemsMap[product.$key];
         return item ? item.quantity : 0;
     }
