@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { ShoppingCartService } from '../shopping-cart.service';
-import { ShoppingCartItem } from '../models/shopping-cart-item';
-import { Product } from '../models/product';
-import { ShoppingCart } from '../models/shopping-cart';
+import { ShoppingCartService } from '../../services/shopping-cart.service';
+import { ShoppingCartItem } from '../../models/shopping-cart-item';
+import { Product } from '../../models/product';
+import { ShoppingCart } from '../../models/shopping-cart';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({

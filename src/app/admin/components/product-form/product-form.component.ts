@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from '../../category.service';
-import { ProductService } from '../../product.service';
+import { CategoryService } from '../../../shared/services/category.service';
+import { ProductService } from '../../../shared/services/product.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/take';
-import { Product } from '../../models/product';
-import { Category } from '../../models/category';
+import { Product } from '../../../shared/models/product';
+import { Category } from '../../../shared/models/category';
 import { FirebaseListObservable } from 'angularfire2/database';
 
 @Component({

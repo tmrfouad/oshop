@@ -1,8 +1,8 @@
-import { ShoppingCartItem } from './models/shopping-cart-item';
+import { ShoppingCartItem } from '../models/shopping-cart-item';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
-import { Product } from './models/product';
-import { ShoppingCart } from './models/shopping-cart';
+import { Product } from '../models/product';
+import { ShoppingCart } from '../models/shopping-cart';
 
 @Injectable()
 export class ShoppingCartService {

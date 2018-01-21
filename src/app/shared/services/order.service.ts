@@ -1,7 +1,7 @@
 import { ShoppingCartService } from './shopping-cart.service';
-import { Order } from './models/order';
+import { Order } from '../models/order';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 
 @Injectable()
 export class OrderService {
@@ -11,11 +11,20 @@ export class OrderService {
     private cartService: ShoppingCartService
   ) { }
 
-  getAll() {
+  getAll(): FirebaseListObservable<Order[]> {
     return this.db.list('/orders');
   }
 
-  get(orderId: string) {
+  getByUser(userId: string): FirebaseListObservable<Order[]> {
+    return this.db.list('/orders', {
+      query: {
+        orderByChild: 'userId',
+        equalTo: userId
+      }
+    });
+  }
+
+  get(orderId: string): FirebaseObjectObservable<Order> {
     return this.db.object(`/orders/${ orderId }`);
   }
 

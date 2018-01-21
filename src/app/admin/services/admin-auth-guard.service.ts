@@ -1,9 +1,9 @@
-import { AuthService } from './auth.service';
+import { AuthService } from '../../shared/services/auth.service';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
-import { UserService } from './user.service';
+import { UserService } from '../../shared/services/user.service';
 
 @Injectable()
 export class AdminAuthGuard implements CanActivate {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Shipping } from '../models/shipping';
-import { ShoppingCartService } from '../shopping-cart.service';
-import { ShoppingCart } from '../models/shopping-cart';
+import { Shipping } from '../shared/models/shipping';
+import { ShoppingCartService } from '../shared/services/shopping-cart.service';
+import { ShoppingCart } from '../shared/models/shopping-cart';
 import { FirebaseObjectObservable } from 'angularfire2/database';
 
 @Component({

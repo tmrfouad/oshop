@@ -1,0 +1,43 @@
+<div
+  *ngIf="order$ | async as order"
+  class="card">
+  <div class="card-body">
+    <h5 class="card-title">Order Details</h5>
+    <div>
+      <h6 class="card-subtitle mb-2 d-inline">Customer : </h6>
+      <div class="card-text d-inline">{{ order.shipping.name }}</div>
+    </div>
+    <div>
+      <h6 class="card-subtitle mb-2 d-inline">Date : </h6>
+      <div class="card-text d-inline">{{ order.datePlaced | date: 'yyyy/MM/dd' }}</div>
+    </div>
+    <div>
+      <h6 class="card-subtitle mb-2 d-inline">Items : </h6>
+    </div>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of order.items">
+            <td>
+              <div class="shopping-cart-thumb"
+                [style.backgroundImage]="'url(' + item.product.imageUrl + ')'"></div>
+            </td>
+            <td class="card-text">{{ item.product.title }}</td>
+            <td class="card-text">{{ item.product.price }}</td>
+            <td class="card-text">{{ item.quantity }}</td>
+            <td class="card-text">{{ item.totalPrice }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

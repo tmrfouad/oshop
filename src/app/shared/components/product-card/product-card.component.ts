@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Product } from '../../models/product';
-import { ShoppingCartService } from '../../shopping-cart.service';
+import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { Subscription } from 'rxjs/Subscription';
 import { ShoppingCart } from '../../models/shopping-cart';
 import { ShoppingCartItem } from '../../models/shopping-cart-item';
