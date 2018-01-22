@@ -1,0 +1,9 @@
+{
+    "navbar": {
+        "login": "Log In",
+        "myOrders": "My Orders",
+        "manageOrders": "Manage Orders",
+        "manageProducts": "Manage Products",
+        "logOut": "Log Out"
+    }
+}

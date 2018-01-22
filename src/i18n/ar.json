@@ -1,0 +1,9 @@
+{
+    "navbar": {
+        "login": "تسجيل الدخول",
+        "myOrders": "أوامري",
+        "manageOrders": "إدارة الأوامر",
+        "manageProducts": "إدارة المنتجات",
+        "logOut": "تسجيل الخروج"
+    }
+}

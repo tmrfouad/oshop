@@ -6,6 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { TranslateModule } from 'ng2-translate';
+import { HttpModule } from '@angular/http';
 
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { OrdersListComponent } from './components/orders-list/orders-list.component';
@@ -25,6 +26,7 @@ import { UserService } from './services/user.service';
     FormsModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    HttpModule,
     TranslateModule.forRoot(),
     NgbModule.forRoot(),
     RouterModule.forChild([
