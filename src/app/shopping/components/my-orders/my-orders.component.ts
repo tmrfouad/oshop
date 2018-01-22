@@ -1,8 +1,8 @@
-import { AuthService } from '../shared/services/auth.service';
+import { AuthService } from '../../../shared/services/auth.service';
 import { Subscription } from 'rxjs/Subscription';
-import { Order } from '../shared/models/order';
+import { Order } from '../../../shared/models/order';
 import { FirebaseListObservable } from 'angularfire2/database';
-import { OrderService } from '../shared/services/order.service';
+import { OrderService } from '../../../shared/services/order.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
