@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CategoryService } from '../../../../shared/services/category.service';
 import { Category } from '../../../../shared/models/category';
 import { Observable } from 'rxjs/Observable';
+import { Product } from 'shared/models/product';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -10,8 +11,12 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./product-filter.component.css']
 })
 export class ProductFilterComponent implements OnInit {
-  categories$: Observable<Category[]>;
   @Input('category') category: string;
+  @Output('filterChange') filterChange = new EventEmitter<string>();
+
+  categories$: Observable<Category[]>;
+  filter: string;
+  filteredProducts: Product[] = [];
 
   constructor(private categoryService: CategoryService) { }
 
@@ -19,4 +24,7 @@ export class ProductFilterComponent implements OnInit {
     this.categories$ = this.categoryService.getAll();
   }
 
+  filterProducts() {
+    this.filterChange.emit(this.filter);
+  }
 }

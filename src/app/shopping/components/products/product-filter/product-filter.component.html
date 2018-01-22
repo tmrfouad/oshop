@@ -1,9 +1,23 @@
 <div class="sticky-top">
   <div class="list-group">
+    <div class="list-group-item">
+        <div class="input-group">
+          <div class="input-group-addon">
+              <i class="fa fa-search" aria-hidden="true"></i>
+          </div>
+          <input
+          [(ngModel)]="filter"
+          name="filter"
+          class="form-control"
+          type="text"
+          placeholder="Search..."
+          (keyup)="filterProducts()">
+        </div>
+    </div>
     <a
       class="list-group-item list-group-item-action"
       routerLink="/products"
-      [class.active]="!category">All Categories
+      [class.active]="!category">{{ 'productFilter.allCategories' | translate }}
     </a>
     <a
       *ngFor="let c of categories$ | async"

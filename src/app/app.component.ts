@@ -22,10 +22,16 @@ export class AppComponent implements OnInit {
     this.translate.addLangs(['en', 'ar']);
     this.translate.setDefaultLang('en');
 
-    const browserLang = this.translate.getBrowserLang();
-    this.translate.use(browserLang.match(/en|ar/) ? browserLang : 'en');
-
+    const currentLang = localStorage.getItem('lang');
+    if (currentLang) {
+      this.translate.use(currentLang);
+    }
+    else {      
+      const browserLang = this.translate.getBrowserLang();
+      this.translate.use(browserLang.match(/en|ar/) ? browserLang : 'en');
+    }
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      localStorage.setItem('lang', event.lang);
       if (event.lang === 'ar') {
         // do something
       }

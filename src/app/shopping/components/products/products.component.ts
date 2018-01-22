@@ -34,14 +34,18 @@ export class ProductsComponent implements OnInit {
         return this.route.queryParamMap;
     }).subscribe(params => {
         this.category = params.get('category');
-        this.FilterProducts();
+        this.FilterProducts('');
     });
   }
 
-  private FilterProducts() {
+  private FilterProducts(filter: string) {
     this.filteredProducts =
     this.category ?
-    this.products.filter(p => p.category === this.category) :
-    this.products;
+    this.products.filter(p => {
+      return p.category === this.category && p.title.toLowerCase().indexOf(filter.toLowerCase()) >= 0;
+    }) :
+    this.products.filter(p => {
+      return p.title.toLowerCase().indexOf(filter.toLowerCase()) >= 0;
+    });
   }
 }

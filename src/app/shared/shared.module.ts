@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Http, HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { TranslateModule } from 'ng2-translate';
-import { HttpModule } from '@angular/http';
+import { TranslateLoader, TranslateModule, TranslateStaticLoader } from 'ng2-translate';
 
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { OrdersListComponent } from './components/orders-list/orders-list.component';
@@ -20,6 +20,10 @@ import { ProductService } from './services/product.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { UserService } from './services/user.service';
 
+export function createTranslateLoader(http: Http) {
+  return new TranslateStaticLoader(http, './assets/i18n', '.json');
+}
+
 @NgModule({
   imports: [
     CommonModule,
@@ -27,7 +31,11 @@ import { UserService } from './services/user.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     HttpModule,
-    TranslateModule.forRoot(),
+    TranslateModule.forRoot({
+      provide: TranslateLoader,
+      useFactory: (createTranslateLoader),
+      deps: [Http]
+    }),
     NgbModule.forRoot(),
     RouterModule.forChild([
       { path: 'my/orders/:id', component: OrderDetailsComponent, canActivate: [AuthGuard] },

@@ -23,7 +23,7 @@
       <ul class="navbar-nav float-right">
         <ng-template #anonymousUser>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/login">{{ 'navbar.login' | translate }}</a>
+            <a class="nav-link" routerLink="/login">{{ 'bsNavbar.login' | translate }}</a>
           </li>
         </ng-template>
         <li
@@ -32,12 +32,14 @@
           <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">{{ currentUser.name }}</a>
           <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" routerLink="/my/orders">{{ 'navbar.myOrders' | translate }}</a>
+            <a class="dropdown-item" routerLink="/my/orders">{{ 'bsNavbar.myOrders' | translate }}</a>
             <ng-container *ngIf="currentUser.isAdmin">
-              <a class="dropdown-item" routerLink="/admin/orders">{{ 'navbar.manageOrders' | translate }}</a>
-              <a class="dropdown-item" routerLink="/admin/products">{{ 'navbar.manageProducts' | translate }}</a>
+              <a class="dropdown-item" routerLink="/admin/orders">{{ 'bsNavbar.manageOrders' | translate }}</a>
+              <a class="dropdown-item" routerLink="/admin/products">{{ 'bsNavbar.manageProducts' | translate }}</a>
             </ng-container>
-            <a class="dropdown-item" (click)="logout()">{{ 'navbar.logOut' | translate }}</a>
+            <a class="dropdown-item" (click)="logout()">{{ 'bsNavbar.logOut' | translate }}</a>
+            <a class="dropdown-item" *ngIf="translate.currentLang === 'ar'" (click)="translate.use('en')">English</a>
+            <a class="dropdown-item" *ngIf="translate.currentLang === 'en'" (click)="translate.use('ar')">العربية</a>
           </div>
         </li>
       </ul>
