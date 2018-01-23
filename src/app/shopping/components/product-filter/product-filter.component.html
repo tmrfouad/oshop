@@ -2,8 +2,10 @@
   <div class="list-group" *ngIf="categories$ | async as categories">
     <div class="list-group-item">
         <div class="input-group">
-          <div class="input-group-addon">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
               <i class="fa fa-search" aria-hidden="true"></i>
+            </span>
           </div>
           <input
           [(ngModel)]="filter"
