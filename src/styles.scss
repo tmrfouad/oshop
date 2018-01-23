@@ -1,43 +1,139 @@
 @import '~bootstrap/dist/css/bootstrap.css';
 @import '~font-awesome/css/font-awesome.css';
 
-$primary-color: #c1d62e;
-$primary-color-hover: #b1c522;
-$primary-color-disabled: #b2c522c9;
+$green-theme-primary-color: #c1d62e;
+$green-theme-primary-color-hover: darken($green-theme-primary-color, 5);
+$green-theme-primary-color-disabled: rgba($green-theme-primary-color, 0.9);
+$green-theme-primary-color-box-shadow: rgba($green-theme-primary-color, 0.25);
+
+$purple-theme-primary-color: #7337ff;
+$purple-theme-primary-color-hover: darken($purple-theme-primary-color, 5);
+$purple-theme-primary-color-disabled: rgba($purple-theme-primary-color, 0.9);
+$purple-theme-primary-color-box-shadow: rgba($purple-theme-primary-color, 0.25);
 
 body {
     padding-top: 80px;
+}
+
+.layout-rtl {
+    direction: rtl;
+
+    // fix bootstrap input-group rtl issue
+    .input-group .input-group-prepend .input-group-text {
+        border-top-right-radius: .25rem;
+        border-bottom-right-radius: .25rem;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-left: none;
+    }
+    
+    .input-group .form-control:not(:first-child):last-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: .25rem;
+        border-bottom-left-radius: .25rem;
+    }
+    
+    .input-group .form-control:not(:first-child):not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    
+    .input-group .form-control:first-child:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: .25rem;
+        border-bottom-left-radius: .25rem;
+    }
+    
+    .input-group .input-group-append .input-group-text {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: .25rem;
+        border-bottom-left-radius: .25rem;
+        border-right: none;
+    }
+    // end of 'fix bootstrap input-group rtl issue'
+
+    // fix list-group-item rtl issue
+    .list-group-item {
+        text-align: right;
+    }
+    // end of 'fix list-group-item rtl issue'
+}
+
+.layout-ltr {
+    direction: ltr;
 }
 
 .btn {
     cursor: pointer;
 }
 
-.navbar-light .navbar-brand {
-    color: $primary-color;
-}
-
-.list-group-item.active {
-    background-color: $primary-color;
-    border-color: $primary-color;
-}
-
-.btn-primary {
-    background-color: $primary-color;
-    border-color: $primary-color;
-}
-
-.btn-primary:hover {
-    background-color: $primary-color-hover;
-    border-color: $primary-color-hover;
-}
-
 .btn-primary:disabled {
-    background-color: $primary-color-disabled;
-    border-color: $primary-color-disabled;
     cursor: default;
 }
 
-.form-control:focus {
-    border-color: $primary-color;
+.green-theme {
+    .navbar-light .navbar-brand {
+        color: $green-theme-primary-color;
+    }
+    
+    .list-group-item.active {
+        background-color: $green-theme-primary-color;
+        border-color: $green-theme-primary-color;
+    }
+    
+    .btn-primary {
+        background-color: $green-theme-primary-color;
+        border-color: $green-theme-primary-color;
+    }
+    
+    .btn-primary:hover {
+        background-color: $green-theme-primary-color-hover;
+        border-color: $green-theme-primary-color-hover;
+    }
+    
+    .btn-primary:disabled {
+        background-color: $green-theme-primary-color-disabled;
+        border-color: $green-theme-primary-color-disabled;
+    }
+    
+    .form-control:focus {
+        border-color: $green-theme-primary-color;
+        box-shadow: 0 0 0 0.2rem $green-theme-primary-color-box-shadow;
+    }
+}
+
+.purple-theme {
+    .navbar-light .navbar-brand {
+        color: $purple-theme-primary-color;
+    }
+    
+    .list-group-item.active {
+        background-color: $purple-theme-primary-color;
+        border-color: $purple-theme-primary-color;
+    }
+    
+    .btn-primary {
+        background-color: $purple-theme-primary-color;
+        border-color: $purple-theme-primary-color;
+    }
+    
+    .btn-primary:hover {
+        background-color: $purple-theme-primary-color-hover;
+        border-color: $purple-theme-primary-color-hover;
+    }
+    
+    .btn-primary:disabled {
+        background-color: $purple-theme-primary-color-disabled;
+        border-color: $purple-theme-primary-color-disabled;
+    }
+    
+    .form-control:focus {
+        border-color: $purple-theme-primary-color;
+        box-shadow: 0 0 0 0.2rem $purple-theme-primary-color-box-shadow;
+    }
 }

@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { CategoryService } from '../../../shared/services/category.service';
-import { ProductService } from '../../../shared/services/product.service';
-import { Router, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/take';
-import { Product } from '../../../shared/models/product';
-import { Category } from '../../../shared/models/category';
+
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseListObservable } from 'angularfire2/database';
+import { Category } from 'shared/models/category';
+import { Product } from 'shared/models/product';
+import { CategoryService } from 'shared/services/category.service';
+import { ProductService } from 'shared/services/product.service';
+import { TranslateService } from 'ng2-translate';
 
 @Component({
   selector: 'app-product-form',
@@ -21,7 +23,8 @@ export class ProductFormComponent implements OnInit {
     private categoryService: CategoryService,
     private productService: ProductService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    public translate: TranslateService) { }
 
   ngOnInit() {
     this.categories$ = this.categoryService.getAll();

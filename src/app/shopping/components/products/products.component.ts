@@ -1,3 +1,4 @@
+import { TranslateService } from 'ng2-translate';
 import { FirebaseObjectObservable } from 'angularfire2/database';
 import { ShoppingCart } from '../../../shared/models/shopping-cart';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -21,7 +22,8 @@ export class ProductsComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
-    private cartService: ShoppingCartService) { }
+    private cartService: ShoppingCartService,
+    private translate: TranslateService) { }
 
   async ngOnInit() {
     this.cart$ = await this.cartService.get();

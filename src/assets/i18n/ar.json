@@ -7,9 +7,7 @@
         "logOut": "تسجيل الخروج"
     },
     "productFilter": {
-        "allCategories": "جميع الفئات"
-    },
-    "categories": {
-        
+        "allCategories": "جميع الفئات",
+        "searchPlaceholder": "بحث"
     }
 }
