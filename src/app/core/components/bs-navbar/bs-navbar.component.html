@@ -13,25 +13,26 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/shopping-cart">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            <span
-              *ngIf="cart$ | async as cart"
-              class="badge badge-warning badge-pill"
-            >{{ cart.totalQuantity }}</span>
+            <span *ngIf="cart$ | async as cart" class="badge badge-warning badge-pill">{{ cart.totalQuantity }}</span>
           </a>
         </li>
       </ul>
       <ul class="navbar-nav float-right">
+        <li ngbDropdown class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" id="theme-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Themes</a>
+          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="theme-dropdown">
+            <a class="dropdown-item" (click)="setTheme('green-theme')">Green</a>
+            <a class="dropdown-item" (click)="setTheme('purple-theme')">Purple</a>
+          </div>
+        </li>
         <ng-template #anonymousUser>
           <li class="nav-item">
             <a class="nav-link" routerLink="/login">{{ 'bsNavbar.login' | translate }}</a>
           </li>
         </ng-template>
-        <li
-          *ngIf="currentUser; else anonymousUser"
-          ngbDropdown class="nav-item dropdown">
-          <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">{{ currentUser.name }}</a>
-          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+        <li *ngIf="currentUser; else anonymousUser" ngbDropdown class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" id="user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ currentUser.name }}</a>
+          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="user-dropdown">
             <a class="dropdown-item" routerLink="/my/orders">{{ 'bsNavbar.myOrders' | translate }}</a>
             <ng-container *ngIf="currentUser.isAdmin">
               <a class="dropdown-item" routerLink="/admin/orders">{{ 'bsNavbar.manageOrders' | translate }}</a>

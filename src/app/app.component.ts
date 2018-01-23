@@ -11,6 +11,7 @@ import { TranslateService, DefaultLangChangeEvent, TranslationChangeEvent, LangC
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  theme: string;
   constructor(
     private auth: AuthService,
     private router: Router,
@@ -58,5 +59,9 @@ export class AppComponent implements OnInit {
         }
       }
     });
+  }
+
+  onThemeChange(theme) {
+      this.theme = theme;
   }
 }

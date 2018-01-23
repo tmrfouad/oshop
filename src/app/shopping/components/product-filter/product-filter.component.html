@@ -1,32 +1,19 @@
 <div class="sticky-top">
-  <div class="list-group">
-    <div class="list-group-item">
-        <div class="input-group">
-          <div class="input-group-addon">
-              <i class="fa fa-search" aria-hidden="true"></i>
-          </div>
-          <input
-          [(ngModel)]="filter"
-          name="filter"
-          class="form-control"
-          type="text"
-          placeholder="Search..."
-          (keyup)="filterProducts()">
-        </div>
+  <div class="input-group mb-2">
+    <div class="input-group-prepend">
+      <span class="input-group-text">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </span>
     </div>
-    <a
-      class="list-group-item list-group-item-action"
-      routerLink="/products"
-      [class.active]="!category">{{ 'productFilter.allCategories' | translate }}
+    <input [(ngModel)]="filter" name="filter" class="form-control" type="text" placeholder="{{ 'productFilter.searchPlaceholder' | translate }}..."
+      (keyup)="filterProducts()">
+  </div>
+  <div class="list-group">
+    <a class="list-group-item list-group-item-action" routerLink="/products" [class.active]="!category">{{ 'productFilter.allCategories' | translate }}
     </a>
-    <a
-      *ngFor="let c of categories$ | async"
-      class="list-group-item list-group-item-action"
-      routerLink="/products"
-      [queryParams]="{ category: c.$key }"
-      [class.active]="category === c.$key"
-    >
-      {{ c.name }}
+    <a *ngFor="let c of categories$ | async" class="list-group-item list-group-item-action" routerLink="/products" [queryParams]="{ category: c.$key }"
+      [class.active]="category === c.$key">
+      {{ c.name[translate.currentLang] }}
     </a>
   </div>
 </div>
