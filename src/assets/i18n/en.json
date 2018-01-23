@@ -7,9 +7,7 @@
         "logOut": "Log Out"
     },
     "productFilter": {
-        "allCategories": "All Categories"
-    },
-    "categories": {
-        
+        "allCategories": "All Categories",
+        "searchPlaceholder": "Search"
     }
 }

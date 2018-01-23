@@ -25,8 +25,7 @@ export class AppComponent implements OnInit {
     const currentLang = localStorage.getItem('lang');
     if (currentLang) {
       this.translate.use(currentLang);
-    }
-    else {      
+    } else {
       const browserLang = this.translate.getBrowserLang();
       this.translate.use(browserLang.match(/en|ar/) ? browserLang : 'en');
     }

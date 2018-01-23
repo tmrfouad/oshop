@@ -1,5 +1,5 @@
 <div class="sticky-top">
-  <div class="list-group">
+  <div class="list-group" *ngIf="categories$ | async as categories">
     <div class="list-group-item">
         <div class="input-group">
           <div class="input-group-addon">
@@ -10,7 +10,7 @@
           name="filter"
           class="form-control"
           type="text"
-          placeholder="Search..."
+          placeholder="{{ 'productFilter.searchPlaceholder' | translate }}..."
           (keyup)="filterProducts()">
         </div>
     </div>
@@ -20,13 +20,13 @@
       [class.active]="!category">{{ 'productFilter.allCategories' | translate }}
     </a>
     <a
-      *ngFor="let c of categories$ | async"
+      *ngFor="let c of categories"
       class="list-group-item list-group-item-action"
       routerLink="/products"
       [queryParams]="{ category: c.$key }"
       [class.active]="category === c.$key"
     >
-      {{ c.name }}
+      {{ c.name[translate.currentLang] }}
     </a>
   </div>
 </div>

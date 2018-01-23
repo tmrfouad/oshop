@@ -1,6 +1,6 @@
 <bs-navbar></bs-navbar>
 
-<main role="main" class="container">
+<main role="main" class="container d-flex" [ngClass]="translate.currentLang === 'ar' ? 'flex-row-reverse' : 'flex-row'">
 
   <router-outlet></router-outlet>
 

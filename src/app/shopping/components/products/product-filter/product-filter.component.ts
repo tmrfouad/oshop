@@ -3,6 +3,7 @@ import { CategoryService } from '../../../../shared/services/category.service';
 import { Category } from '../../../../shared/models/category';
 import { Observable } from 'rxjs/Observable';
 import { Product } from 'shared/models/product';
+import { TranslateService } from 'ng2-translate';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -18,7 +19,9 @@ export class ProductFilterComponent implements OnInit {
   filter: string;
   filteredProducts: Product[] = [];
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(
+    private categoryService: CategoryService,
+    private translate: TranslateService) { }
 
   ngOnInit() {
     this.categories$ = this.categoryService.getAll();
