@@ -1,21 +1,19 @@
 <div class="sticky-top">
-  <div class="list-group" *ngIf="categories$ | async as categories">
-    <div class="list-group-item">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="fa fa-search" aria-hidden="true"></i>
-            </span>
-          </div>
-          <input
-          [(ngModel)]="filter"
-          name="filter"
-          class="form-control"
-          type="text"
-          placeholder="{{ 'productFilter.searchPlaceholder' | translate }}..."
-          (keyup)="filterProducts()">
-        </div>
+    <div class="input-group mb-2">
+      <div class="input-group-prepend">
+        <span class="input-group-text">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </span>
+      </div>
+      <input
+      [(ngModel)]="filter"
+      name="filter"
+      class="form-control"
+      type="text"
+      placeholder="{{ 'productFilter.searchPlaceholder' | translate }}..."
+      (keyup)="filterProducts()">
     </div>
+  <div class="list-group" *ngIf="categories$ | async as categories">
     <a
       class="list-group-item list-group-item-action"
       routerLink="/products"

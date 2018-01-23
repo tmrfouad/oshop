@@ -1,4 +1,6 @@
-<bs-navbar></bs-navbar>
-<main role="main" class="container">
-  <router-outlet></router-outlet>
-</main>
+<div class="purple-theme">
+  <bs-navbar></bs-navbar>
+  <main role="main" class="container" [ngClass]="translate.currentLang === 'ar' ? 'layout-rtl' : 'layout-ltr'">
+    <router-outlet></router-outlet>
+  </main>
+</div>
