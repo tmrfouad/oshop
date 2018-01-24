@@ -11,7 +11,7 @@ import { TranslateService, DefaultLangChangeEvent, TranslationChangeEvent, LangC
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  theme: string;
+  theme = 'green-theme';
   constructor(
     private auth: AuthService,
     private router: Router,
@@ -20,6 +20,9 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    const theme = localStorage.getItem('theme');
+    if (theme) this.theme = theme;
+
     this.translate.addLangs(['en', 'ar']);
     this.translate.setDefaultLang('en');
 
@@ -30,6 +33,7 @@ export class AppComponent implements OnInit {
       const browserLang = this.translate.getBrowserLang();
       this.translate.use(browserLang.match(/en|ar/) ? browserLang : 'en');
     }
+
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       localStorage.setItem('lang', event.lang);
       if (event.lang === 'ar') {

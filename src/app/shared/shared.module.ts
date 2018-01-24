@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Http, HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { TranslateLoader, TranslateModule, TranslateStaticLoader } from 'ng2-translate';
@@ -36,7 +35,6 @@ export function createTranslateLoader(http: Http) {
       useFactory: (createTranslateLoader),
       deps: [Http]
     }),
-    NgbModule.forRoot(),
     RouterModule.forChild([
       { path: 'my/orders/:id', component: OrderDetailsComponent, canActivate: [AuthGuard] },
       { path: 'admin/orders/:id', component: OrderDetailsComponent, canActivate: [AuthGuard] }
@@ -58,7 +56,6 @@ export function createTranslateLoader(http: Http) {
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     TranslateModule,
-    NgbModule.forRoot().ngModule,
   ],
   providers: [
     AuthService,

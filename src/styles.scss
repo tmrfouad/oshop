@@ -1,18 +1,14 @@
-@import '~bootstrap/dist/css/bootstrap.css';
-@import '~font-awesome/css/font-awesome.css';
+html, body {
+    height: 100%;
+}
 
-$green-theme-primary-color: #c1d62e;
-$green-theme-primary-color-hover: darken($green-theme-primary-color, 5);
-$green-theme-primary-color-disabled: rgba($green-theme-primary-color, 0.9);
-$green-theme-primary-color-box-shadow: rgba($green-theme-primary-color, 0.25);
+.theme-container {
+    height: 100%;
+}
 
-$purple-theme-primary-color: #7337ff;
-$purple-theme-primary-color-hover: darken($purple-theme-primary-color, 5);
-$purple-theme-primary-color-disabled: rgba($purple-theme-primary-color, 0.9);
-$purple-theme-primary-color-box-shadow: rgba($purple-theme-primary-color, 0.25);
-
-body {
+main {
     padding-top: 80px;
+    height: inherit;
 }
 
 .layout-rtl {
@@ -76,11 +72,43 @@ body {
     cursor: default;
 }
 
+// themes
+
+// green theme
+$green-theme-primary-color: #c1d62e;
+$green-theme-primary-color-hover: darken($green-theme-primary-color, 5);
+$green-theme-primary-color-disabled: rgba($green-theme-primary-color, 0.9);
+$green-theme-primary-color-box-shadow: rgba($green-theme-primary-color, 0.25);
+$green-theme-secondary-color: #57834b;
+$green-theme-secondary-color-hover: darken($green-theme-secondary-color, 5);
+$green-theme-secondary-color-disabled: rgba($green-theme-secondary-color, 0.9);
+$green-theme-secondary-color-box-shadow: rgba($green-theme-secondary-color, 0.25);
+$green-theme-light-color: #d2ffc7;
+$green-theme-very-light-color: #f1ffef;
+
 .green-theme {
-    .navbar-light .navbar-brand {
-        color: $green-theme-primary-color;
+    background-color: $green-theme-very-light-color;
+
+    .navbar { 
+        border-bottom: 3px solid $green-theme-primary-color;
     }
-    
+
+    .navbar-light{
+        background-color: $green-theme-light-color !important;
+
+        .navbar-brand {
+            color: $green-theme-primary-color;
+
+            &:hover {
+                color: $green-theme-primary-color;
+            }
+
+            &:focus {
+                color: $green-theme-primary-color;
+            }
+        }
+    }
+
     .list-group-item.active {
         background-color: $green-theme-primary-color;
         border-color: $green-theme-primary-color;
@@ -89,29 +117,84 @@ body {
     .btn-primary {
         background-color: $green-theme-primary-color;
         border-color: $green-theme-primary-color;
+
+        &:hover {
+            background-color: $green-theme-primary-color-hover;
+            border-color: $green-theme-primary-color-hover;
+        }
+
+        &:disabled {
+            background-color: $green-theme-primary-color-disabled;
+            border-color: $green-theme-primary-color-disabled;
+        }
+    }
+
+    .btn-secondary {
+        background-color: $green-theme-secondary-color;
+        border-color: $green-theme-secondary-color;
+
+        &:hover {
+            background-color: $green-theme-secondary-color-hover;
+            border-color: $green-theme-secondary-color-hover;
+        }
+
+        &:disabled {
+            background-color: $green-theme-secondary-color-disabled;
+            border-color: $green-theme-secondary-color-disabled;
+        }
     }
     
-    .btn-primary:hover {
-        background-color: $green-theme-primary-color-hover;
-        border-color: $green-theme-primary-color-hover;
+    .form-control {
+        &:focus {
+            border-color: $green-theme-primary-color;
+            box-shadow: 0 0 0 0.2rem $green-theme-primary-color-box-shadow;
+        }
     }
-    
-    .btn-primary:disabled {
-        background-color: $green-theme-primary-color-disabled;
-        border-color: $green-theme-primary-color-disabled;
+
+    div::-webkit-scrollbar {
+        background-color: $green-theme-light-color;
     }
-    
-    .form-control:focus {
-        border-color: $green-theme-primary-color;
-        box-shadow: 0 0 0 0.2rem $green-theme-primary-color-box-shadow;
+
+    div::-webkit-scrollbar-thumb {
+        background-color: $green-theme-primary-color;
     }
 }
 
+// purple theme
+$purple-theme-primary-color: #7337ff;
+$purple-theme-primary-color-hover: darken($purple-theme-primary-color, 5);
+$purple-theme-primary-color-disabled: rgba($purple-theme-primary-color, 0.9);
+$purple-theme-primary-color-box-shadow: rgba($purple-theme-primary-color, 0.25);
+$purple-theme-secondary-color: #643e6b;
+$purple-theme-secondary-color-hover: darken($purple-theme-secondary-color, 5);
+$purple-theme-secondary-color-disabled: rgba($purple-theme-secondary-color, 0.9);
+$purple-theme-secondary-color-box-shadow: rgba($purple-theme-secondary-color, 0.25);
+$purple-theme-light-color: #d2d6ff;
+$purple-theme-very-light-color: #eff0ff;
+
 .purple-theme {
-    .navbar-light .navbar-brand {
-        color: $purple-theme-primary-color;
+    background-color: $purple-theme-very-light-color;
+
+    .navbar { 
+        border-bottom: 3px solid $purple-theme-primary-color;
     }
-    
+
+    .navbar-light{
+        background-color: $purple-theme-light-color !important;
+
+        .navbar-brand {
+            color: $purple-theme-primary-color;
+
+            &:hover {
+                color: $purple-theme-primary-color;
+            }
+
+            &:focus {
+                color: $purple-theme-primary-color;
+            }
+        }
+    }
+
     .list-group-item.active {
         background-color: $purple-theme-primary-color;
         border-color: $purple-theme-primary-color;
@@ -120,20 +203,45 @@ body {
     .btn-primary {
         background-color: $purple-theme-primary-color;
         border-color: $purple-theme-primary-color;
+
+        &:hover {
+            background-color: $purple-theme-primary-color-hover;
+            border-color: $purple-theme-primary-color-hover;
+        }
+
+        &:disabled {
+            background-color: $purple-theme-primary-color-disabled;
+            border-color: $purple-theme-primary-color-disabled;
+        }
     }
     
-    .btn-primary:hover {
-        background-color: $purple-theme-primary-color-hover;
-        border-color: $purple-theme-primary-color-hover;
+    .btn-secondary {
+        background-color: $purple-theme-secondary-color;
+        border-color: $purple-theme-secondary-color;
+
+        &:hover {
+            background-color: $purple-theme-secondary-color-hover;
+            border-color: $purple-theme-secondary-color-hover;
+        }
+
+        &:disabled {
+            background-color: $purple-theme-secondary-color-disabled;
+            border-color: $purple-theme-secondary-color-disabled;
+        }
     }
-    
-    .btn-primary:disabled {
-        background-color: $purple-theme-primary-color-disabled;
-        border-color: $purple-theme-primary-color-disabled;
+
+    .form-control {
+        &:focus {
+            border-color: $purple-theme-primary-color;
+            box-shadow: 0 0 0 0.2rem $purple-theme-primary-color-box-shadow;
+        }
     }
-    
-    .form-control:focus {
-        border-color: $purple-theme-primary-color;
-        box-shadow: 0 0 0 0.2rem $purple-theme-primary-color-box-shadow;
+
+    div::-webkit-scrollbar {
+        background-color: $purple-theme-light-color;
+    }
+
+    div::-webkit-scrollbar-thumb {
+        background-color: $purple-theme-primary-color;
     }
 }

@@ -1,0 +1,4 @@
+.products-container {
+    height: 85vh;
+    overflow:auto;
+}

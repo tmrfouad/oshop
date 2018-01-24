@@ -2,6 +2,11 @@
     cursor: pointer;
 }
 
-.navbar { 
-    border-bottom: 3px solid #e7e7e7;
+.themes-toggle {
+    width:20px;
+    height:10px
+}
+
+.themes-dropdown-item {
+    height:20px;
 }
