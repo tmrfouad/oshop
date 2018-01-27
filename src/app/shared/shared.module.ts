@@ -18,6 +18,7 @@ import { OrderService } from './services/order.service';
 import { ProductService } from './services/product.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { UserService } from './services/user.service';
+import { LoadingComponent } from './loading/loading.component';
 
 export function createTranslateLoader(http: Http) {
   return new TranslateStaticLoader(http, './assets/i18n', '.json');
@@ -44,7 +45,8 @@ export function createTranslateLoader(http: Http) {
     ProductCardComponent,
     ProductQuantityComponent,
     OrderDetailsComponent,
-    OrdersListComponent
+    OrdersListComponent,
+    LoadingComponent
   ],
   exports: [
     ProductCardComponent,
@@ -56,6 +58,7 @@ export function createTranslateLoader(http: Http) {
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     TranslateModule,
+    LoadingComponent
   ],
   providers: [
     AuthService,

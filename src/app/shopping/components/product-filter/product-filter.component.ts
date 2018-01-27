@@ -18,12 +18,14 @@ export class ProductFilterComponent implements OnInit {
   categories$: Observable<Category[]>;
   filter: string;
   filteredProducts: Product[] = [];
+  loading = false;
 
   constructor(
     private categoryService: CategoryService,
     private translate: TranslateService) { }
 
   ngOnInit() {
+    this.loading = true;
     this.categories$ = this.categoryService.getAll();
   }
 

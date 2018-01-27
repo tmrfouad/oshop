@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterEvent } from '@angular/router';
 
 import { AuthService } from './shared/services/auth.service';
 import { UserService } from './shared/services/user.service';
@@ -12,6 +12,8 @@ import { TranslateService, DefaultLangChangeEvent, TranslationChangeEvent, LangC
 })
 export class AppComponent implements OnInit {
   theme = 'green-theme';
+  loading = false;
+
   constructor(
     private auth: AuthService,
     private router: Router,
@@ -20,6 +22,15 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.router.events.subscribe((event: RouterEvent) => {
+      if (event.toString().startsWith('NavigationStart')) {
+        this.loading = true;
+      }
+      if (event.toString().startsWith('NavigationEnd')) {
+        this.loading = false;
+      }
+    })
+    
     const theme = localStorage.getItem('theme');
     if (theme) this.theme = theme;
 

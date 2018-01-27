@@ -1,6 +1,7 @@
 <div class="theme-container" [ngClass]="theme">
   <bs-navbar [theme-name]="theme" (themeChange)="onThemeChange($event)"></bs-navbar>
   <main role="main" class="container" [ngClass]="translate.currentLang === 'ar' ? 'layout-rtl' : 'layout-ltr'">
+    <loading *ngIf="loading"></loading>
     <router-outlet></router-outlet>
   </main>
 </div>

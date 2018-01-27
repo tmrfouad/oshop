@@ -8,7 +8,7 @@
     <input [(ngModel)]="filter" name="filter" class="form-control" type="text" placeholder="{{ 'productFilter.searchPlaceholder' | translate }}..."
       (keyup)="filterProducts()">
   </div>
-  <div class="list-group">
+  <div *ngIf="categories$ | async; else loadingC" class="list-group">
     <a class="list-group-item list-group-item-action" routerLink="/products" [class.active]="!category">{{ 'productFilter.allCategories' | translate }}
     </a>
     <a *ngFor="let c of categories$ | async" class="list-group-item list-group-item-action" routerLink="/products" [queryParams]="{ category: c.$key }"
@@ -16,4 +16,7 @@
       {{ c.name[translate.currentLang] }}
     </a>
   </div>
+  <ng-template #loadingC>
+    <loading></loading>
+  </ng-template>
 </div>

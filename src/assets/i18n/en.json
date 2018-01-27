@@ -1,5 +1,6 @@
 {
     "bsNavbar": {
+        "products": "Products",
         "login": "Log In",
         "myOrders": "My Orders",
         "manageOrders": "Manage Orders",

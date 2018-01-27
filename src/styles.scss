@@ -2,13 +2,13 @@ html, body {
     height: 100%;
 }
 
-.theme-container {
-    height: 100%;
-}
-
 main {
     padding-top: 80px;
     height: inherit;
+}
+
+.theme-container {
+    height: 100%;
 }
 
 .layout-rtl {
@@ -99,14 +99,21 @@ $green-theme-very-light-color: #f1ffef;
         .navbar-brand {
             color: $green-theme-primary-color;
 
-            &:hover {
-                color: $green-theme-primary-color;
-            }
-
+            &:hover,
             &:focus {
                 color: $green-theme-primary-color;
             }
         }
+    }
+
+    .dropdown-item.active,
+    .dropdown-item:active {
+        background-color: $green-theme-primary-color;
+        border-color: $green-theme-primary-color;
+    }
+
+    .dropdown-item:focus {
+        border-color: $green-theme-primary-color;
     }
 
     .list-group-item.active {
@@ -117,6 +124,18 @@ $green-theme-very-light-color: #f1ffef;
     .btn-primary {
         background-color: $green-theme-primary-color;
         border-color: $green-theme-primary-color;
+
+        .active,
+        &:active {
+            background-color: $green-theme-primary-color;
+            border-color: $green-theme-primary-color;
+        }
+    
+        .focus,
+        &:focus {
+            border-color: $green-theme-primary-color;
+            box-shadow: 0 0 0 0.2rem $green-theme-primary-color-box-shadow;
+        }
 
         &:hover {
             background-color: $green-theme-primary-color-hover;
@@ -185,14 +204,21 @@ $purple-theme-very-light-color: #eff0ff;
         .navbar-brand {
             color: $purple-theme-primary-color;
 
-            &:hover {
-                color: $purple-theme-primary-color;
-            }
-
+            &:hover,
             &:focus {
                 color: $purple-theme-primary-color;
             }
         }
+    }
+
+    .dropdown-item.active,
+    .dropdown-item:active {
+        background-color: $purple-theme-primary-color;
+        border-color: $purple-theme-primary-color;
+    }
+
+    .dropdown-item:focus {
+        border-color: $purple-theme-primary-color;
     }
 
     .list-group-item.active {
@@ -203,6 +229,18 @@ $purple-theme-very-light-color: #eff0ff;
     .btn-primary {
         background-color: $purple-theme-primary-color;
         border-color: $purple-theme-primary-color;
+
+        .active,
+        &:active {
+            background-color: $purple-theme-primary-color;
+            border-color: $purple-theme-primary-color;
+        }
+        
+        .focus,
+        &:focus {
+            border-color: $purple-theme-primary-color;
+            box-shadow: 0 0 0 0.2rem $purple-theme-primary-color-box-shadow;
+        }
 
         &:hover {
             background-color: $purple-theme-primary-color-hover;

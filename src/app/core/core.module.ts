@@ -9,7 +9,10 @@ import { LoginComponent } from './components/login/login.component';
 @NgModule({
   imports: [
     SharedModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent },
+      { path: 'login', component: LoginComponent }
+    ])
   ],
   declarations: [
     BsNavbarComponent,
