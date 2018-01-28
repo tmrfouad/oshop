@@ -1,3 +1,5 @@
+import { OrderItem } from './../models/order-item';
+import { Product } from './../models/product';
 import { ShoppingCartService } from './shopping-cart.service';
 import { Order } from '../models/order';
 import { Injectable } from '@angular/core';
@@ -13,6 +15,18 @@ export class OrderService {
 
   getAll(): FirebaseListObservable<Order[]> {
     return this.db.list('/orders');
+  }
+
+  private getProducts() {
+    return this.db.list('/orders', {query: {orderByKey: true}}).map((orders: Order[]) => {
+      return orders.map(order => {
+        return this.db.list(`/orders/${order.$key}/items`);
+      });
+    });
+  }
+
+  getFeaturedProducts() {
+    return null;
   }
 
   getByUser(userId: string): FirebaseListObservable<Order[]> {
