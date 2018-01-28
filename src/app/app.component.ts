@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
     private auth: AuthService,
     private router: Router,
     private userService: UserService,
-    private translate: TranslateService
+    public translate: TranslateService
   ) { }
 
   ngOnInit() {

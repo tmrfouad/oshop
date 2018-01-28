@@ -22,7 +22,7 @@ export class ProductFilterComponent implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
-    private translate: TranslateService) { }
+    public translate: TranslateService) { }
 
   ngOnInit() {
     this.loading = true;

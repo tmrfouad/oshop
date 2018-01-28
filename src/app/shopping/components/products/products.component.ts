@@ -24,7 +24,7 @@ export class ProductsComponent implements OnInit {
     private productService: ProductService,
     private route: ActivatedRoute,
     private cartService: ShoppingCartService,
-    private translate: TranslateService,
+    public translate: TranslateService,
     private router: Router) { }
 
   async ngOnInit() {
@@ -46,11 +46,11 @@ export class ProductsComponent implements OnInit {
     }).subscribe(params => {
         this.category = params.get('category');
         this.FilterProducts('');
-        this.loading = false
+        this.loading = false;
     });
   }
 
-  private FilterProducts(filter: string) {
+  FilterProducts(filter: string) {
     this.filteredProducts =
     this.category ?
     this.products.filter(p => {
